@@ -60,5 +60,17 @@ var handlers = {
     },
     toggleAll: function(){
         toDoList.toggleAll();
+    },
+    addToDos: function(){
+        var itemToAdd = document.getElementById('addToDoTextInputs');
+        toDoList.addToDos(itemToAdd.value);
+        itemToAdd.value = '';
+    },
+    changeToDo: function(){
+        var position = document.getElementById('changePosition');
+        var changeText = document.getElementById('changeText');
+        toDoList.changeToDos(position.valueAsNumber, changeText.value);
+        position.value = '';
+        changeText.value = '';
     }
 };

@@ -4,9 +4,21 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1> Testing testing</h1>
-    <button onclick="handlers.displayToDos()">Display List</button>
-    <button onclick="handlers.toggleAll()">Toggle All</button>
+    <h1> To Do List</h1>
+    <div>
+        <button onclick="handlers.displayToDos()">Display List</button>
+        <button onclick="handlers.toggleAll()">Toggle All</button>
+    </div>
+    <div>
+        <button onclick="handlers.addToDos()"> Add</button>
+        <input id="addToDoTextInputs" type="text">
+    </div>
+    <div>
+        <button onclick="handlers.changeToDo()">Change Task</button>
+        <input id="changePosition" type="number">
+        <input id="changeText" type="text">
+    </div>
+    
     <script src="todo.js"></script>
 </body>
 </html>
