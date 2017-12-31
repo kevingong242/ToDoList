@@ -50,10 +50,8 @@ var handlers = {
         itemToAdd.value = '';
         view.displayToDos();
     },
-    deleteToDo: function(){
-        var position = document.getElementById('removePosition');
-        toDoList.deleteToDos(position.valueAsNumber);
-        position.value = '';
+    deleteToDo: function(position){
+        toDoList.deleteToDos(position);
         view.displayToDos();
     },
     changeToDo: function(){
@@ -89,8 +87,27 @@ var view = {
             }else{
                 toDoWithCompletion = "( )" + toDoList.todos[i].todoText;
             }
+            toDoLi.id = i;
             toDoLi.textContent = toDoWithCompletion;
+            toDoLi.appendChild(this.createDeleteButton());
             toDoUl.appendChild(toDoLi);
         }
+    },
+    createDeleteButton: function(){
+        var deleteButton = document.createElement('button');
+        deleteButton.textContent = "Delete";
+        deleteButton.className = "deleteButton";
+        return deleteButton;
+    },
+    setUpEventListners: function(){
+        var toDoUl = document.querySelector('ul');
+        toDoUl.addEventListener('click', function(event){
+            var elementClicked = event.target;
+            if(elementClicked.className === "deleteButton"){
+            handlers.deleteToDo(parseInt(elementClicked.parentElement.id));
+            }
+        });
     }
 };
+
+view.setUpEventListners();
