@@ -83,7 +83,7 @@ var view = {
             toDoText.className = "col-8"
             var toDoWithCompletion = '';
             if(toDoList.todos[i].completed === true){
-                toDoText.textContent = "(x) " + toDoList.todos[i].todoText + " ";
+                toDoText.textContent = "(x)" + toDoList.todos[i].todoText + " ";
             }else{
                 toDoText.textContent = "( )" + toDoList.todos[i].todoText + " ";
             }
