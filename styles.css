@@ -5,3 +5,11 @@ header{
     background: grey;
     color: #fff;
 }
+
+.taskButtons div{
+    margin: 5px;
+}
+
+.taskList ul{
+    list-style: none;
+}
