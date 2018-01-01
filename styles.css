@@ -6,6 +6,11 @@ header{
     color: #fff;
 }
 
+::-webkit-input-placeholder { /* WebKit browsers */
+     color: grey;
+     opacity: .35;
+}
+
 .row{
     background: grey;
     color: #fff;
@@ -19,11 +24,17 @@ header{
     margin: 5px;
 }
 
-.taskList ul{
-    list-style: none;
-    display: inline;
+.taskList{
+    margin: auto;
 }
 
-.taskList ul li p{
+.taskList ol li{
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 4px;
+    padding-top: 1px;
+}
+
+.taskList ol li p{
     display: inline-block;
 }

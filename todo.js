@@ -57,7 +57,7 @@ var handlers = {
     changeToDo: function(){
         var position = document.getElementById('changePosition');
         var changeText = document.getElementById('changeText');
-        toDoList.changeToDos(position.valueAsNumber, changeText.value);
+        toDoList.changeToDos(position.valueAsNumber-1, changeText.value);
         position.value = '';
         changeText.value = '';
         view.displayToDos();
@@ -75,19 +75,17 @@ var handlers = {
 //object that manipulates the tasks displayed on screen
 var view = {
     displayToDos: function(){
-        var toDoUl = document.querySelector('ul');
+        var toDoUl = document.querySelector('ol');
         toDoUl.innerHTML = '';
         for(var i = 0; i < toDoList.todos.length; i++){
             var toDoLi = document.createElement('li');
             var toDoText = document.createElement('p');
             toDoText.className = "col-8"
-            var toDoWithCompletion = '';
             if(toDoList.todos[i].completed === true){
-                toDoText.textContent = "(x)" + toDoList.todos[i].todoText + " ";
+                toDoText.textContent = "(x) " + toDoList.todos[i].todoText + " ";
             }else{
-                toDoText.textContent = "( )" + toDoList.todos[i].todoText + " ";
+                toDoText.textContent = "( ) " + toDoList.todos[i].todoText + " ";
             }
-            //toDoText.textContent = toDoWithCompletion
             toDoLi.id = i;
             toDoLi.appendChild(toDoText);
             toDoLi.appendChild(this.createDeleteButton());
@@ -111,8 +109,9 @@ var view = {
         completeButton.className = "completeButton btn btn-success col-2";
         return completeButton;
     },
+    //listen to which button is clicked and call the correct handler
     setUpEventListners: function(){
-        var toDoUl = document.querySelector('ul');
+        var toDoUl = document.querySelector('ol');
         toDoUl.addEventListener('click', function(event){
             var elementClicked = event.target;
             if(elementClicked.className === "deleteButton btn btn-danger col-2"){
