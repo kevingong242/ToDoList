@@ -79,14 +79,17 @@ var view = {
         toDoUl.innerHTML = '';
         for(var i = 0; i < toDoList.todos.length; i++){
             var toDoLi = document.createElement('li');
+            var toDoText = document.createElement('p');
+            toDoText.className = "col-8"
             var toDoWithCompletion = '';
             if(toDoList.todos[i].completed === true){
-                toDoWithCompletion = "(x)" + toDoList.todos[i].todoText + " ";
+                toDoText.textContent = "(x) " + toDoList.todos[i].todoText + " ";
             }else{
-                toDoWithCompletion = "( )" + toDoList.todos[i].todoText + " ";
+                toDoText.textContent = "( )" + toDoList.todos[i].todoText + " ";
             }
+            //toDoText.textContent = toDoWithCompletion
             toDoLi.id = i;
-            toDoLi.textContent = toDoWithCompletion;
+            toDoLi.appendChild(toDoText);
             toDoLi.appendChild(this.createDeleteButton());
             toDoLi.appendChild(this.createCompleteButton());
             toDoUl.appendChild(toDoLi);
@@ -95,7 +98,7 @@ var view = {
     createDeleteButton: function(){
         var deleteButton = document.createElement('button');
         deleteButton.textContent = "Delete";
-        deleteButton.className = "deleteButton btn btn-danger";
+        deleteButton.className = "deleteButton btn btn-danger col-2";
         return deleteButton;
     },
     createCompleteButton: function(){
@@ -105,17 +108,17 @@ var view = {
         } else{
             completeButton.textContent = "Complete";
         }
-        completeButton.className = "completeButton btn btn-success";
+        completeButton.className = "completeButton btn btn-success col-2";
         return completeButton;
     },
     setUpEventListners: function(){
         var toDoUl = document.querySelector('ul');
         toDoUl.addEventListener('click', function(event){
             var elementClicked = event.target;
-            if(elementClicked.className === "deleteButton btn btn-danger"){
+            if(elementClicked.className === "deleteButton btn btn-danger col-2"){
                 handlers.deleteToDo(parseInt(elementClicked.parentElement.id));
             }
-            if(elementClicked.className === "completeButton btn btn-success"){
+            if(elementClicked.className === "completeButton btn btn-success col-2"){
                 handlers.toggleCompleted(parseInt(elementClicked.parentElement.id));
             }
         });

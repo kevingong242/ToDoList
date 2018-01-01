@@ -12,4 +12,9 @@ header{
 
 .taskList ul{
     list-style: none;
+    display: inline;
+}
+
+.taskList ul li p{
+    display: inline-block;
 }
